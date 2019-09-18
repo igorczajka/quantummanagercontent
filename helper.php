@@ -47,6 +47,7 @@ class QuantummanagercontentHelper
 
 		foreach ($scopes as $scope)
 		{
+			$scope = (array)$scope;
 			$output[$scope['id']] = $scope['fieldsform'];
 		}
 
@@ -62,11 +63,14 @@ class QuantummanagercontentHelper
 	 */
 	public static function defaultValues()
 	{
+		$lang = Factory::getLanguage();
+		$lang->load('plg_editors-xtd_quantummanagercontent', JPATH_ADMINISTRATOR);
+
 		return [
-			'images' => [
+			'images' => (object)[
 				'id' => 'images',
 				'template' => '<img src="{file}" alt="{alt}" width="{width}" height="{height}" />',
-				'fieldsform' => json_encode([
+				'fieldsform' => [
 					'fieldsform0' => [
 						'nametemplate' => 'width',
 						'name' => Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_IMAGES_FIELDSFORM_WIDTH_NAME'),
@@ -85,26 +89,26 @@ class QuantummanagercontentHelper
 						'default' => '',
 						'type' => 'text',
 					]
-				])
+				]
 			],
-			'docs' => [
+			'docs' => (object)[
 				'id' => 'docs',
 				'template' => '<a href="{file}" target="_blank">{name}</a>',
-				'fieldsform' => json_encode([
+				'fieldsform' => [
 					'fieldsform0' => [
 						'nametemplate' => 'name',
-						'name' => Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_IMAGES_FIELDSFORM_ALT_NAME'),
+						'name' => Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_DOCS_FIELDSFORM_NAME_NAME'),
 						'default' => Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_IMAGES_FIELDSFORM_DEFAULT_NAME'),
 						'type' => 'text',
 					],
-				])
+				]
 			],
-			'music' => [
+			'music' => (object)[
 				'id' => 'music',
 				'template' => '<audio controls src="{file}"> ' . Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_MUSIC_TEMPLATE_TEXT') . '</audio>',
 				'fieldsform' => '',
 			],
-			'videos' => [
+			'videos' => (object)[
 				'id' => 'videos',
 				'template' => '<video src="{file}" autoplay>' . Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_VIDEOS_TEMPLATE_TEXT') . '</video>',
 				'fieldsform' => '',

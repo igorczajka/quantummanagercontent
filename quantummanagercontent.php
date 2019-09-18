@@ -78,7 +78,7 @@ class PlgButtonQuantummanagercontent extends CMSPlugin
 
 		$app = Factory::getApplication();
 		$data = $app->input->getArray();
-		$html = 'test';
+		$html = '';
 
 		if(!isset($data['file'], $data['scope']))
 		{
@@ -86,10 +86,11 @@ class PlgButtonQuantummanagercontent extends CMSPlugin
 		}
 
 		JLoader::register('QuantummanagerHelper', JPATH_ROOT . '/administrator/components/com_quantummanager/helpers/quantummanager.php');
+		JLoader::register('QuantummanagercontentHelper', JPATH_ROOT . '/plugins/editors-xtd/quantummanagercontent/helper.php');
 
 		$scope = $data['scope'];
 		$file = QuantummanagerHelper::preparePath($data['path'], false, $scope, true);
-		$scopesTemplate = $this->params->get('scopes');
+		$scopesTemplate = $this->params->get('scopes', QuantummanagercontentHelper::defaultValues());
 		$variables = [
 			'{file}' => $file,
 		];

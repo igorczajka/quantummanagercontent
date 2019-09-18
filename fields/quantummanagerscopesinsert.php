@@ -48,9 +48,11 @@ class JFormFieldQuantummanagerscopesinsert extends JFormFieldSubform
 		foreach ($scopes as $scope) {
 			$findValue = null;
 
-			foreach ($currentValue as $value) {
-				if ($value['id'] === $scope->id) {
-					$findValue = $value;
+			if(is_array($currentValue) && count($currentValue) > 0) {
+				foreach ($currentValue as $value) {
+					if ($value['id'] === $scope->id) {
+						$findValue = $value;
+					}
 				}
 			}
 
@@ -64,8 +66,8 @@ class JFormFieldQuantummanagerscopesinsert extends JFormFieldSubform
 			$defaultFieldsform = '';
 
 			if (isset($defaultValues[$scope->id])) {
-				$defaultTemplate = $defaultValues[$scope->id]['template'];
-				$defaultFieldsform = $defaultValues[$scope->id]['fieldsform'];
+				$defaultTemplate = $defaultValues[$scope->id]->template;
+				$defaultFieldsform = json_encode($defaultValues[$scope->id]->fieldsform);
 			}
 
 			$scopesForInput['scopes' . $i] = [
