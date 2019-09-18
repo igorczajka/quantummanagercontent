@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="plugin" group="editors-xtd" method="upgrade">
+	<name>PLG_BUTTON_ARTICLE_SHORTCODE</name>
+	<author>Tsymbal</author>
+	<creationDate>June 2019</creationDate>
+	<copyright>Copyright (c) 2018 - 2019 Septdir Workshop. All rights reserved.</copyright>
+	<license>https://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>development@septdir.com</authorEmail>
+	<authorUrl>https://www.septdir.com/</authorUrl>
+	<version>1.1.5-dev</version>
+	<description>PLG_BUTTON_ARTICLE_SHORTCODE_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_quantummanagercontent.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_quantummanagercontent.sys.ini</language>
+	</languages>
+	<files>
+		<filename plugin="quantummanagercontent">quantummanagercontent.php</filename>
+	</files>
+	<config>
+		<fields name="params" addfieldpath="/plugins/editors-xtd/quantummanagercontent/fields">
+			<fieldset name="basic">
+				<field
+						name="scopes"
+						type="quantummanagerscopesinsert"
+						label="Области"
+						description="PLG_RADICAL_MULTI_FIELD_PARAMS_EXTEND_FIELDS_DESC"
+						required="true"
+						buttons=" "
+						multiple="true">
+					<form>
+						<field
+								name="title"
+								type="text"
+								default=""
+								label="Область"
+								disabled="disabled"
+						/>
+
+						<field
+								name="id"
+								type="hidden"
+						/>
+
+						<field
+								name="fieldsform"
+								type="subform"
+								label="Дополнительные поля для вставки"
+								description="PLG_RADICAL_MULTI_FIELD_PARAMS_EXTEND_FIELDS_DESC"
+								required="true"
+								layout="joomla.form.field.subform.repeatable-table"
+								multiple="true">
+							<form>
+								<field
+										name="nametemplate"
+										type="text"
+										label="Имя для шаблона"
+								/>
+								<field
+										name="name"
+										type="text"
+										label="Имя поля"
+								/>
+								<field
+										name="default"
+										type="text"
+										label="Значение по умолчанию"
+								/>
+								<field
+										name="type"
+										type="list"
+										default="text"
+										label="Выберите тип поля"
+										description="">
+									<option value="text">Text</option>
+									<option value="number">Number</option>
+								</field>
+							</form>
+						</field>
+
+						<field
+								name="template"
+								type="textarea"
+								default=""
+								label="Шаблон кнопки вставки"
+								description=""
+								rows="10"
+								cols="5"
+								filter="raw"
+						/>
+					</form>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
