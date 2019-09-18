@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="plugin" group="editors-xtd" method="upgrade">
-	<name>PLG_BUTTON_ARTICLE_SHORTCODE</name>
+	<name>PLG_BUTTON_QUANTUMMANAGERCONTENT</name>
 	<author>Tsymbal</author>
 	<creationDate>June 2019</creationDate>
-	<copyright>Copyright (c) 2018 - 2019 Septdir Workshop. All rights reserved.</copyright>
+	<copyright>Copyright © 2019 Delo Design &amp; NorrNext. All rights reserved.</copyright>
 	<license>https://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<authorEmail>development@septdir.com</authorEmail>
-	<authorUrl>https://www.septdir.com/</authorUrl>
-	<version>1.1.5-dev</version>
-	<description>PLG_BUTTON_ARTICLE_SHORTCODE_DESCRIPTION</description>
+	<authorEmail>cymbal@delo-design.ru</authorEmail>
+	<authorUrl>https://www.norrnext.com</authorUrl>
+	<version>1.0</version>
+	<description>PLG_BUTTON_QUANTUMMANAGERCONTENT_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.ini</language>
@@ -18,6 +18,8 @@
 	</languages>
 	<files>
 		<filename plugin="quantummanagercontent">quantummanagercontent.php</filename>
+		<filename plugin="quantummanagercontent">helper.php</filename>
+		<folder>fields</folder>
 	</files>
 	<config>
 		<fields name="params" addfieldpath="/plugins/editors-xtd/quantummanagercontent/fields">
@@ -25,8 +27,7 @@
 				<field
 						name="scopes"
 						type="quantummanagerscopesinsert"
-						label="Области"
-						description="PLG_RADICAL_MULTI_FIELD_PARAMS_EXTEND_FIELDS_DESC"
+						label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES"
 						required="true"
 						buttons=" "
 						multiple="true">
@@ -35,7 +36,7 @@
 								name="title"
 								type="text"
 								default=""
-								label="Область"
+								label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_TITLE"
 								disabled="disabled"
 						/>
 
@@ -47,8 +48,7 @@
 						<field
 								name="fieldsform"
 								type="subform"
-								label="Дополнительные поля для вставки"
-								description="PLG_RADICAL_MULTI_FIELD_PARAMS_EXTEND_FIELDS_DESC"
+								label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_FIELDSFORM"
 								required="true"
 								layout="joomla.form.field.subform.repeatable-table"
 								multiple="true">
@@ -56,24 +56,23 @@
 								<field
 										name="nametemplate"
 										type="text"
-										label="Имя для шаблона"
+										label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_FIELDSFORM_NAMETEMPLATE"
 								/>
 								<field
 										name="name"
 										type="text"
-										label="Имя поля"
+										label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_FIELDSFORM_NAME"
 								/>
 								<field
 										name="default"
 										type="text"
-										label="Значение по умолчанию"
+										label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_FIELDSFORM_DEFAULT"
 								/>
 								<field
 										name="type"
 										type="list"
 										default="text"
-										label="Выберите тип поля"
-										description="">
+										label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_FIELDSFORM_TYPE">
 									<option value="text">Text</option>
 									<option value="number">Number</option>
 								</field>
@@ -83,9 +82,7 @@
 						<field
 								name="template"
 								type="textarea"
-								default=""
-								label="Шаблон кнопки вставки"
-								description=""
+								label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_TEMPLATE"
 								rows="10"
 								cols="5"
 								filter="raw"

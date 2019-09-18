@@ -1,11 +1,10 @@
 <?php
 /**
- * @package    DachaDacha Package
- * @version    __DEPLOY_VERSION__
- * @author     Septdir Workshop - septdir.com
- * @copyright  Copyright (c) 2018 - 2019 Septdir Workshop. All rights reserved.
- * @license    GNU/GPL license: https://www.gnu.org/copyleft/gpl.html
- * @link       https://www.septdir.com/
+ * @package    quantummanagercontent
+ * @author     Dmitry Tsymbal <cymbal@delo-design.ru>
+ * @copyright  Copyright © 2019 Delo Design & NorrNext. All rights reserved.
+ * @license    GNU General Public License version 3 or later; see license.txt
+ * @link       https://www.norrnext.com
  */
 
 defined('_JEXEC') or die;

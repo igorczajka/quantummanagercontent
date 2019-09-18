@@ -1,12 +1,13 @@
 <?php
 /**
- * @package    Radical MultiField
- *
- * @author     delo-design.ru <info@delo-design.ru>
- * @copyright  Copyright (C) 2018 "Delo Design". All rights reserved.
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       https://delo-design.ru
+ * @package    quantummanagercontent
+ * @author     Dmitry Tsymbal <cymbal@delo-design.ru>
+ * @copyright  Copyright © 2019 Delo Design & NorrNext. All rights reserved.
+ * @license    GNU General Public License version 3 or later; see license.txt
+ * @link       https://www.norrnext.com
  */
+
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Filter\OutputFilter;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -14,7 +15,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Layout\FileLayout;
 
-defined('_JEXEC') or die;
+
 
 JFormHelper::loadFieldClass('subform');
 
@@ -38,10 +39,11 @@ class JFormFieldQuantummanagerscopesinsert extends JFormFieldSubform
 	{
 		$lang = Factory::getLanguage()->load('com_quantummanager', JPATH_ROOT . '/administrator/components/com_quantummanager');
 		JLoader::register('QuantummanagerHelper', JPATH_ROOT . '/administrator/components/com_quantummanager/helpers/quantummanager.php');
+		JLoader::register('QuantummanagercontentHelper', JPATH_ROOT . '/plugins/editors-xtd/quantummanagercontent/helper.php');
 		$scopesForInput = [];
 		$currentValue = $this->value;
 		$scopes = QuantummanagerHelper::getAllScope('all');
-		$defaultValues = $this->defaultValues();
+		$defaultValues = QuantummanagercontentHelper::defaultValues();
 		$i = 0;
 		foreach ($scopes as $scope) {
 			$findValue = null;
