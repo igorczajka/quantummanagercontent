@@ -160,32 +160,37 @@ EOT
 			}
 		}
 
+		$template = '<a href="{file}" target="_blank">{name}</a>';
 
-		foreach ($scopesTemplate as $template)
+		foreach ($scopesTemplate as $scopesTemplateCurrent)
 		{
 
-			if($template->id === $scope)
+			if($scopesTemplateCurrent->id === $scope)
 			{
 
-				if(empty($template->template))
+				if(empty($scopesTemplateCurrent->template))
 				{
-					$template->template = '<a href="{file}" target="_blank">{name}</a>';
+					$template = '<a href="{file}" target="_blank">{name}</a>';
 				}
-
-				$variablesFind = [];
-				$variablesReplace = [];
-
-				foreach ($variables as $key => $value)
+				else
 				{
-					$variablesFind[] = $key;
-					$variablesReplace[] = $value;
+					$template = $scopesTemplateCurrent->template;
 				}
-
-				$html = str_replace($variablesFind, $variablesReplace, $template->template);
-				$html = preg_replace("#[a-zA-Z]{1,}\=\"\"#isu", '', $html);
 
 			}
 		}
+
+		$variablesFind = [];
+		$variablesReplace = [];
+
+		foreach ($variables as $key => $value)
+		{
+			$variablesFind[] = $key;
+			$variablesReplace[] = $value;
+		}
+
+		$html = str_replace($variablesFind, $variablesReplace, $template);
+		$html = preg_replace("#[a-zA-Z]{1,}\=\"\"#isu", '', $html);
 
 		echo $html;
 
