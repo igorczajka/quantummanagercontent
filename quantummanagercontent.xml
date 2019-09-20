@@ -10,9 +10,6 @@
 	<version>1.0</version>
 	<description>PLG_BUTTON_QUANTUMMANAGERCONTENT_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
-	<updateservers>
-		<server type="extension" priority="1" name="quantummanagercontent">https://hika.su/update/free/plg_quantummanagercontent.xml</server>
-	</updateservers>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.sys.ini</language>
