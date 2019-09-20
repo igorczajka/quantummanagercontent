@@ -39,6 +39,12 @@ class PlgButtonQuantummanagercontent extends CMSPlugin
 	 */
 	public function onDisplay($name, $asset, $author)
 	{
+		$app = Factory::getApplication();
+		if(!$app->isClient('administrator'))
+		{
+			return;
+		}
+
 		$user = Factory::getUser();
 
 		// Can create in any category (component permission) or at least in one category
@@ -67,8 +73,59 @@ class PlgButtonQuantummanagercontent extends CMSPlugin
 		$button->link    = $link;
 		$button->text    = Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_BUTTON');
 		$button->name    = 'file-add';
-		$button->options = "{handler: 'iframe', size: {x: 800, y: 500}}";
+		$button->options = "{handler: 'iframe', size: {x: 1450, y: 700}, classWindow: 'quantummanager-modal-sbox-window'}";
 
+		$label = Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_BUTTON');
+
+		Factory::getDocument()->addStyleDeclaration(<<<EOT
+@media screen and (max-width: 1540px) {
+	.mce-window[aria-label="{$label}"] {
+		left: 2% !important;
+		right: 0 !important;
+		width: 95% !important;
+	}
+	
+	.mce-window[aria-label="{$label}"] .mce-reset
+	{
+		width: 100% !important;
+		height: 100% !important;
+	}
+	
+	.mce-window[aria-label="{$label}"] .mce-window-body {
+		width: 100% !important;
+		height: calc(100% - 96px) !important;
+	}
+	
+	.mce-window[aria-label="{$label}"] .mce-foot {
+		width: 100% !important;
+	}
+	
+	.mce-window[aria-label="{$label}"] .mce-foot .mce-container-body {
+		width: 100% !important;
+	}
+	
+	.mce-window[aria-label="{$label}"] .mce-foot .mce-container-body .mce-widget {
+		left: auto !important;
+		right: 18px !important;
+	}
+}
+
+@media screen and (max-height: 700px) {
+
+	.mce-window[aria-label="{$label}"] {
+		top: 2% !important;
+		height: 95% !important;
+	}
+		
+	.mce-window[aria-label="{$label}"] .mce-window-body {
+		height: calc(100% - 96px) !important;
+	}
+			
+}
+
+
+EOT
+);
 		return $button;
 	}
 
@@ -112,7 +169,7 @@ class PlgButtonQuantummanagercontent extends CMSPlugin
 
 				if(empty($template->template))
 				{
-
+					$template->template = '<a href="{file}" target="_blank">{name}</a>';
 				}
 
 				$variablesFind = [];

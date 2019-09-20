@@ -17,6 +17,12 @@ class QuantummanagercontentHelper
 {
 
 
+	public static function loadLang()
+	{
+		Factory::getLanguage()->load('plg_editors-xtd_quantummanagercontent', JPATH_ADMINISTRATOR);
+	}
+
+
 	/**
 	 *
 	 * @return array
@@ -48,7 +54,10 @@ class QuantummanagercontentHelper
 		foreach ($scopes as $scope)
 		{
 			$scope = (array)$scope;
-			$output[$scope['id']] = $scope['fieldsform'];
+			$output[$scope['id']] = [
+				'title' => $scope['title'],
+				'fieldsform' => $scope['fieldsform']
+			];
 		}
 
 		return $output;
@@ -65,10 +74,12 @@ class QuantummanagercontentHelper
 	{
 		$lang = Factory::getLanguage();
 		$lang->load('plg_editors-xtd_quantummanagercontent', JPATH_ADMINISTRATOR);
+		$lang->load('com_quantummanager', JPATH_ROOT . '/administrator/components/com_quantummanager');
 
 		return [
 			'images' => (object)[
 				'id' => 'images',
+				'title' => Text::_('COM_QUANTUMMANAGER_SCOPE_IMAGES'),
 				'template' => '<img src="{file}" alt="{alt}" width="{width}" height="{height}" />',
 				'fieldsform' => [
 					'fieldsform0' => [
@@ -93,6 +104,7 @@ class QuantummanagercontentHelper
 			],
 			'docs' => (object)[
 				'id' => 'docs',
+				'title' => Text::_('COM_QUANTUMMANAGER_SCOPE_DOCS'),
 				'template' => '<a href="{file}" target="_blank">{name}</a>',
 				'fieldsform' => [
 					'fieldsform0' => [
@@ -105,11 +117,13 @@ class QuantummanagercontentHelper
 			],
 			'music' => (object)[
 				'id' => 'music',
+				'title' => Text::_('COM_QUANTUMMANAGER_SCOPE_MUSIC'),
 				'template' => '<audio controls src="{file}"> ' . Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_MUSIC_TEMPLATE_TEXT') . '</audio>',
 				'fieldsform' => '',
 			],
 			'videos' => (object)[
 				'id' => 'videos',
+				'title' => Text::_('COM_QUANTUMMANAGER_SCOPE_VIDEOS'),
 				'template' => '<video src="{file}" autoplay>' . Text::_('PLG_BUTTON_QUANTUMMANAGERCONTENT_SCOPES_VIDEOS_TEMPLATE_TEXT') . '</video>',
 				'fieldsform' => '',
 			]

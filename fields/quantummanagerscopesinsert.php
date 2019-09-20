@@ -72,6 +72,7 @@ class JFormFieldQuantummanagerscopesinsert extends JFormFieldSubform
 
 			$scopesForInput['scopes' . $i] = [
 				'title' => $scope->title,
+				'titleLabel' => $scope->title,
 				'id' => $scope->id,
 				'fieldsform' => $findValue !== null ? $findValue['fieldsform'] : $defaultFieldsform,
 				'template' => $findValue !== null ? $findValue['template'] : $defaultTemplate,

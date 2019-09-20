@@ -10,6 +10,9 @@
 	<version>1.0</version>
 	<description>PLG_BUTTON_QUANTUMMANAGERCONTENT_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
+	<updateservers>
+		<server type="extension" priority="1" name="quantummanagercontent">https://hika.su/update/free/plg_quantummanagercontent.xml</server>
+	</updateservers>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.ini</language>
 		<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_quantummanagercontent.sys.ini</language>
@@ -24,6 +27,13 @@
 	<config>
 		<fields name="params" addfieldpath="/plugins/editors-xtd/quantummanagercontent/fields">
 			<fieldset name="basic">
+
+				<field type="note"
+					   label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_DOCS_LABEL"
+					   description="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_DOCS"
+					   class="alert alert-info"
+				/>
+
 				<field
 						name="scopes"
 						type="quantummanagerscopesinsert"
@@ -33,11 +43,16 @@
 						multiple="true">
 					<form>
 						<field
-								name="title"
+								name="titleLabel"
 								type="text"
 								default=""
 								label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_TITLE"
 								disabled="disabled"
+						/>
+
+						<field
+								name="title"
+								type="hidden"
 						/>
 
 						<field
@@ -84,7 +99,7 @@
 								type="textarea"
 								label="PLG_BUTTON_QUANTUMMANAGERCONTENT_CONFIG_SCOPES_TEMPLATE"
 								rows="10"
-								cols="5"
+								cols="10"
 								filter="raw"
 						/>
 					</form>
